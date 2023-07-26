@@ -8,6 +8,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repositoy.AvatarRepository;
 import ru.hogwarts.school.repositoy.StudentRepository;
 
+import javax.transaction.Transactional;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,6 +52,7 @@ public class StudentService {
         return studentRepository.findAllByAge(age);
     }
 
+    @Transactional
     public Avatar findAvatar(long studentId) {
         return avatarRepository.findByStudentId(studentId).orElseThrow();
     }
